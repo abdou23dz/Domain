@@ -1,0 +1,33 @@
+import xml.etree.ElementTree as ET
+tree = ET.parse('Domain.xml')
+root = tree.getroot()
+# configurationProperty list 
+list=[]
+searchlist=[]
+# do=root.find(".//configurationProperty[@value='Line1Domain1']")
+# print(do.text)
+# for data in tree.findall("configurationProperty"):
+    # print(data.text)
+for d in root.findall(".//configurationProperty"):
+    #print(d.get('value'))
+    list.append(d.get('value'))
+print('Input Domain')    
+val= input()
+existe = False
+for x in list:
+    if None == x:
+       list.remove(x)
+    else:
+     searchlist.append('|'+x)   
+#for x in list:
+     
+#print(searchlist)
+for x in searchlist:
+    if '|'+str(val)+'|' in  x: 
+        existe= True
+    
+if existe:        
+        print('**1**')
+else:           
+        print('**0**')
+        
